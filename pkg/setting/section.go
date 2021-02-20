@@ -1,45 +1,40 @@
 package setting
 
-import (
-	"time"
-)
+import "time"
 
-type ServerSettingS struct {
-	RunMode string
-	HttpPort string
-	ReadTimeout time.Duration
+type ServerSettings struct {
+	RunMode      string
+	HttpPort     string
+	ReadTimeout  time.Duration
 	WriteTimeout time.Duration
 }
 
-type AppSettingS struct {
+type AppSettings struct {
 	DefaultPageSize int
-	MaxPageSize int
-	LogSavePath string
-	LogFileName string
-	LogFileExt string
+	MaxPageSize     int
+	LogSavePath     string
+	LogFileName     string
+	LogFileExt      string
 }
 
 type DatabaseSettings struct {
-	DbType string
-	Username string
-	Password string
-	Host string
-	DBname string
-	TablePrefix string
-	Charset string
-	ParseTime bool
+	DBType       string
+	Username     string
+	Password     string
+	Host         string
+	DBName       string
+	TablePrefix  string
+	Charset      string
+	ParseTime    bool
 	MaxIdleConns int
 	MaxOpenConns int
 }
 
-func (s *Setting) ReadSection(k string, v interface{})error  {
+func (s *Setting) ReadSection(k string, v interface{}) error {
 	err := s.vp.UnmarshalKey(k, v)
-	if err != nil{
-		return  err
+	if err != nil {
+		return err
 	}
 
-	return  nil
+	return nil
 }
-
-
-

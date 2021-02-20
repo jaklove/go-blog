@@ -7,7 +7,7 @@ import (
 )
 
 type Response struct {
-	Ctx *gin.Context
+	ctx *gin.Context
 }
 
 type Pager struct {
@@ -16,33 +16,38 @@ type Pager struct {
 	TotalRows int `json:"total_rows"`
 }
 
-func NewResponse(ctx *gin.Context)*Response  {
-	return &Response{Ctx:ctx,}
+func NewResponse(ctx *gin.Context) *Response {
+	return &Response{ctx: ctx}
 }
 
 func (r *Response)ToResponse(data interface{})  {
 	if data == nil{
 		data = gin.H{}
 	}
-	r.Ctx.JSON(http.StatusOK,data)
+	r.ctx.JSON(http.StatusOK,data)
 }
 
-func (r *Response)ToResponseList(err *errcode.Error)  {
-	response := gin.H{"code": err.Code(), "msg": err.Msg()}
-	details := err.Details()
-	if len(details) > 0{
-		response["details"] = details
-	}
-	r.Ctx.JSON(err.StatusCode(),response)
-}
-
-func (r *Response)ToErrorResponse(err *errcode.Error){
+func (r *Response)ToErrorResponse(err *errcode.Error)  {
 	response := gin.H{"code":err.Code(),"msg":err.Msg()}
 	details := err.Details()
 	if len(details) > 0{
 		response["details"] = details
 	}
-	r.Ctx.JSON(err.StatusCode(),response)
+	r.ctx.JSON(err.StatusCode(),response)
 }
+
+func (r *Response)ToResponseList(list interface{},totalRows int)  {
+	r.ctx.JSON(http.StatusOK,gin.H{
+		"list":list,
+		"pager":Pager{
+			Page: GetPage(r.ctx),
+			PageSize: GetPageSize(r.ctx),
+			TotalRows: totalRows,
+		},
+	})
+}
+
+
+
 
 

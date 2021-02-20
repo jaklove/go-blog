@@ -1,11 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"go-blog/global"
 	"go-blog/internal/model"
-	"go-blog/internal/routers"
+	"go-blog/internal/router"
 	"go-blog/pkg/logger"
 	"go-blog/pkg/setting"
 	"gopkg.in/natefinch/lumberjack.v2"
@@ -14,54 +13,61 @@ import (
 	"time"
 )
 
-func init()  {
-	err := setupSettings()
-	if err != nil{
-		log.Fatalf("init.setupsetting err: %v",err)
-	}
-	err = setupLogger()
-	if err != nil{
-		log.Fatal("init.setupLogger err: %v",err)
-	}
-}
 
 
-func main()  {
-	global.Logger.Info("%s:go-blog/%s","zhourenjie")
+// @title  博客系统
+// @version 1.0
+// @description Go语言编程之旅:一起用Go做项目
+func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
-	router := routers.NewRouter()
-	fmt.Println("port:",global.ServerSetting.HttpPort)
-	s := &http.Server{
-		Addr:":"+global.ServerSetting.HttpPort,
-		Handler:router,
-		ReadTimeout:global.ServerSetting.ReadTimeout,
-		WriteTimeout:global.ServerSetting.WriteTimeout,
+	newRouter := router.NewRouter()
+	S := &http.Server{
+		Addr:           ":" + global.ServerSetting.HttpPort,
+		Handler:        newRouter,
+		ReadTimeout:    global.ServerSetting.ReadTimeout,
+		WriteTimeout:   global.ServerSetting.WriteTimeout,
 		MaxHeaderBytes: 1 << 20,
 	}
-	s.ListenAndServe()
+
+	global.Logger.Infof("%s: go-programming-tour-books/%s","zhourenjie","blog-service")
+	S.ListenAndServe()
 }
 
+//初始化对应的对象
+func init() {
+	err := setupSetting()
+	if err != nil {
+		log.Fatalf("init.setUpSetting: %v", err)
+	}
 
-func setupSettings()error  {
-	setting, err := setting.NewSetTing()
+	err = setUpLogger()
 	if err != nil{
+		log.Fatalf("init.setUpLogger err: %v",err)
+	}
+	err = setUpDBEngine()
+	if err != nil{
+		log.Fatalf("init.setUpDBEngine err: %v",err)
+	}
+}
+
+func setupSetting() error {
+	newSetting, err := setting.NewSetting()
+	if err != nil {
 		return err
 	}
 
-	section := setting.ReadSection("Server", &global.ServerSetting)
-	err = section
-	if err != nil{
-		fmt.Println(global.ServerSetting)
-		return  err
+	err = newSetting.ReadSection("Server", &global.ServerSetting)
+	if err != nil {
+		return err
 	}
 
-	err = setting.ReadSection("App",&global.AppSetting)
-	if err != nil{
-		return  err
+	err = newSetting.ReadSection("App", &global.AppSetting)
+	if err != nil {
+		return err
 	}
 
-	err = setting.ReadSection("Database",&global.DatabaseSetting)
-	if err != nil{
+	err = newSetting.ReadSection("Database", &global.DataBaseSetting)
+	if err != nil {
 		return err
 	}
 
@@ -70,20 +76,23 @@ func setupSettings()error  {
 	return nil
 }
 
-func setupDBEngine()error  {
+func setUpDBEngine() error {
 	var err error
-	global.DBEngine, err = model.NewDBEngine(global.DatabaseSetting)
-	if err != nil{
-		return  err
+	global.DBEngine, err = model.NewDBEngine(global.DataBaseSetting)
+	if err != nil {
+		return err
 	}
-	return  nil
-}
-func setupLogger()error  {
-	global.Logger = logger.NewLogger(&lumberjack.Logger{
-		Filename:global.AppSetting.LogSavePath+"/"+global.AppSetting.LogFileName+global.AppSetting.LogFileExt,
-		MaxSize:600,
-		MaxAge:10,
-		LocalTime:true,
-	},"",log.LstdFlags).WitchCaller(2)
+
 	return nil
+}
+
+func setUpLogger()error  {
+	filename := global.AppSetting.LogSavePath + "/" + global.AppSetting.LogFileName + global.AppSetting.LogFileExt
+	global.Logger = logger.NewLogger(&lumberjack.Logger{
+		Filename: filename,
+		MaxSize: 600,
+		MaxAge: 10,
+		LocalTime: true,
+	},"",log.LstdFlags).WithCaller(2)
+	return  nil
 }

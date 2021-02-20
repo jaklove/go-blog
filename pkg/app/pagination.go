@@ -7,23 +7,19 @@ import (
 )
 
 func GetPage(c *gin.Context)int  {
-	page := convert.Strto(c.Query("page")).MustInt()
-	if page <= 0{
-		return  1
+	mustInt := convert.StrTo(c.Query("page")).MustInt()
+	if mustInt <= 0{
+		return 1
 	}
-	return  page
+	return mustInt
 }
 
-func GetPageSize(c *gin.Context)  int{
-	pageSize := convert.Strto(c.Query("page_size")).MustInt()
-	if pageSize <= 0{
+func GetPageSize(c *gin.Context) int {
+	mustInt := convert.StrTo(c.Query("page_size")).MustInt()
+	if mustInt <= 0{
 		return global.AppSetting.DefaultPageSize
 	}
-	if pageSize > global.AppSetting.MaxPageSize{
-		return global.AppSetting.MaxPageSize
-	}
-
-	return  pageSize
+	return mustInt
 }
 
 func GetPageOffset(page,pageSize int)int  {
@@ -31,8 +27,5 @@ func GetPageOffset(page,pageSize int)int  {
 	if page > 0{
 		result = (page - 1)*pageSize
 	}
-	return  result
+	return result
 }
-
-
-

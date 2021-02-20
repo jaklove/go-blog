@@ -16,10 +16,9 @@ DataBase:
   Username: root
   Password: sinowealth
   Host: 127.0.0.1:3306
-  DBName: learn-go
+  DBName: go
   TablePrefix: blog_
   Charset: utf8
   ParseTime: True
   MaxIdleConns: 10
   MaxOpenConns: 30
-
