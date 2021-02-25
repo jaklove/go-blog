@@ -1,7 +1,6 @@
 package app
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	ut "github.com/go-playground/universal-translator"
 	val "github.com/go-playground/validator/v10"
@@ -35,8 +34,6 @@ func (v ValidErrors) Errors() []string {
 func BindAndValid(c *gin.Context, v interface{})(bool,ValidErrors) {
 	var errs ValidErrors
 	err := c.ShouldBind(v) //绑定的时候验证当前传入的值是否符合结构体的验证规则
-	fmt.Println("ShouldBind:",err)
-	fmt.Println("ShouldBind end")
 	if err != nil {
 		v := c.Value("trans")
 		trans, _ := v.(ut.Translator)
@@ -45,8 +42,6 @@ func BindAndValid(c *gin.Context, v interface{})(bool,ValidErrors) {
 			return false,errs
 		}
 		for key,value := range verrs.Translate(trans){
-			fmt.Println("key",key)
-			fmt.Println("value",value)
 			errs = append(errs,&ValidError{
 				Key: key,
 				Message: value,

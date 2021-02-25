@@ -1,6 +1,8 @@
 package setting
 
-import "time"
+import (
+	"time"
+)
 
 type ServerSettings struct {
 	RunMode      string
@@ -15,6 +17,10 @@ type AppSettings struct {
 	LogSavePath     string
 	LogFileName     string
 	LogFileExt      string
+	UploadSavePath  string
+    UploadServerUrl string
+	UploadImageMaxSize int
+	UploadImageAllowExts []string
 }
 
 type DatabaseSettings struct {

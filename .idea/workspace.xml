@@ -20,28 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="671bc743-8841-4d6e-af32-fb525680e8d9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/db.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/setting.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/model.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/routers/api/v1/article.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/routers/api/v1/tag.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/routers/router.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/app/app.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/app/pagination.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/convert/convert.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/errcode/common_code.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/logger/logger.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/setting/section.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/setting/setting.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/app.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/configs/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/app/form.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/app/form.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/setting/section.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/setting/section.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/app.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,22 +104,22 @@
       <screen x="1920" y="0" width="2048" height="1112" />
     </state>
     <state x="2725" y="297" key="FileChooserDialogImpl/0.0.1280.680/1920.0.2048.1112@1920.0.2048.1112" timestamp="1612852637349" />
-    <state width="2005" height="387" key="GridCell.Tab.0.bottom" timestamp="1613730075561">
+    <state width="2005" height="215" key="GridCell.Tab.0.bottom" timestamp="1614245283650">
       <screen x="1920" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="387" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.2048.1112@1920.0.2048.1112" timestamp="1613730075561" />
-    <state width="2005" height="387" key="GridCell.Tab.0.center" timestamp="1613730075561">
+    <state width="2005" height="215" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.2048.1112@1920.0.2048.1112" timestamp="1614245283650" />
+    <state width="2005" height="215" key="GridCell.Tab.0.center" timestamp="1614245283650">
       <screen x="1920" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="387" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.2048.1112@1920.0.2048.1112" timestamp="1613730075561" />
-    <state width="2005" height="387" key="GridCell.Tab.0.left" timestamp="1613730075561">
+    <state width="2005" height="215" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.2048.1112@1920.0.2048.1112" timestamp="1614245283650" />
+    <state width="2005" height="215" key="GridCell.Tab.0.left" timestamp="1614245283650">
       <screen x="1920" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="387" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.2048.1112@1920.0.2048.1112" timestamp="1613730075561" />
-    <state width="2005" height="387" key="GridCell.Tab.0.right" timestamp="1613730075561">
+    <state width="2005" height="215" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.2048.1112@1920.0.2048.1112" timestamp="1614245283650" />
+    <state width="2005" height="215" key="GridCell.Tab.0.right" timestamp="1614245283650">
       <screen x="1920" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="387" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.2048.1112@1920.0.2048.1112" timestamp="1613730075561" />
+    <state width="2005" height="215" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.2048.1112@1920.0.2048.1112" timestamp="1614245283650" />
     <state x="2446" y="201" key="SettingsEditor" timestamp="1612687635355">
       <screen x="1920" y="0" width="2048" height="1112" />
     </state>

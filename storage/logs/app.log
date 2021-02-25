@@ -39,3 +39,8 @@
 2021/02/19 17:50:44 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1613728244876927900}
 2021/02/19 17:56:39 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"error","message":"svc.CreateTag err: Error 1054: Unknown column 'created_by' in 'field list'","time":1613728599271907700}
 2021/02/19 18:11:54 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"error","message":"svc.CreateTag err: Error 1054: Unknown column 'state' in 'field list'","time":1613729514973221200}
+2021/02/19 18:12:16 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1613729536394285400}
+2021/02/19 18:16:13 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"error","message":"svc.CreateTag err: Error 1054: Unknown column 'state' in 'field list'","time":1613729773557374500}
+2021/02/19 18:21:21 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"error","message":"app.BindAndValid errs: Name长度必须至少为3个字符","time":1613730081912767100}
+2021/02/25 17:27:56 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614245276707341800}
+2021/02/25 17:28:03 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614245283717882000}
