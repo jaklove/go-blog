@@ -3,10 +3,11 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
+	"go-blog/global"
 	"go-blog/internal/middleware"
 	v1 "go-blog/internal/router/api/v1"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
-
+	"net/http"
 )
 
 
@@ -21,6 +22,9 @@ func NewRouter() *gin.Engine {
 	tag := v1.Tag{}
 	article := v1.Article{}
 
+	upload := NewUpload()
+	engine.POST("/upload/file",upload.UploadFile)
+	engine.StaticFS("/static",http.Dir(global.AppSetting.UploadSavePath))
 	apiv1 := engine.Group("/api/v1")
 	{
 		//标签路由管理
