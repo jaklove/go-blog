@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"go-blog/global"
+	"go-blog/internal/frequency"
 	"go-blog/internal/service"
 	"go-blog/pkg/app"
 	"go-blog/pkg/convert"
@@ -18,10 +19,11 @@ func NewUpload()Upload  {
 }
 
 func (u Upload)UploadFile(c *gin.Context)  {
+	frequency.Dianshu =  frequency.Dianshu + 1
+	fmt.Println("访问次数",frequency.Dianshu)
 	response := app.NewResponse(c)
 	file, header, err := c.Request.FormFile("file")
 	fileType := convert.StrTo(c.PostForm("type")).MustInt()
-	fmt.Println("上传文件")
     if err != nil{
     	errRsp := errcode.InvalidParams.WithDetails(err.Error())
     	response.ToErrorResponse(errRsp)

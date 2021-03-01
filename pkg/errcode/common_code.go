@@ -27,7 +27,7 @@ type Error struct {
 var codes = map[int]string{}
 
 func NewError(code int,msg string)*Error  {
-	if _,ok :=codes[code];ok{
+	if _,ok := codes[code];ok{
 		panic(fmt.Sprintf("错误码 %d已经存在，请更换一个",code))
 	}
 	codes[code] = msg

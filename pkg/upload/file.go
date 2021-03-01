@@ -39,7 +39,6 @@ func CheckContainExt(t FileType, name string) bool {
 	ext := GetFileExt(name)
 	ext = strings.ToUpper(ext)
 	switch t {
-
 	case TypeImage:
 		for _, allowExt := range global.AppSetting.UploadImageAllowExts {
 			if strings.ToUpper(allowExt) == ext {
