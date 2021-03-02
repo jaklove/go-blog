@@ -48,6 +48,10 @@ func (r *Response) ToResponseList(list interface{}, totalRows int) {
 }
 
 func (r *Response) BuildData(code int, msg string, data interface{}) map[string]interface{} {
+	if data == nil{
+		data = make(map[string]interface{})
+	}
+
 	return gin.H{
 		"code": code,
 		"msg":  msg,

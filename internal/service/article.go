@@ -1,5 +1,9 @@
 package service
 
+import (
+	"go-blog/internal/dao"
+	"go-blog/internal/model"
+)
 
 type CreateArticleRequest struct {
 	Title string `form:"title" binding:"required"`
@@ -7,6 +11,6 @@ type CreateArticleRequest struct {
 	Content string `form:"content" binding:"required"`
 }
 
-func (svc *Service)CrateArticle(param *CreateArticleRequest) error {
-	return svc.dao.CreateArticle(param.Title,param.Desc,param.Content)
+func (svc *Service)CrateArticle(param *dao.CreateArticleRequest)(*model.Article,error){
+	return svc.dao.CreateArticle(param)
 }

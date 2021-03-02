@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"go-blog/global"
+	"go-blog/internal/dao"
 	"go-blog/internal/service"
 	"go-blog/pkg/app"
 	"go-blog/pkg/errcode"
@@ -26,7 +27,7 @@ func (a Article)Get(c *gin.Context)  {
 func (a Article)List(c *gin.Context)  {}
 
 func (a Article)Create(c *gin.Context)  {
-	param := service.CreateArticleRequest{}
+	param := dao.CreateArticleRequest{}
 	response := app.NewResponse(c)
 	valid,errs := app.BindAndValid(c,&param)
 	if !valid{
@@ -36,7 +37,9 @@ func (a Article)Create(c *gin.Context)  {
 		return
 	}
 	svc := service.New(c.Request.Context())
-	err := svc.CrateArticle(&param)
+
+
+	_,err := svc.CrateArticle(&param)
 	if err != nil{
 		global.Logger.Errorf("svc.CreateTag err: %v",err)
 		response.ToErrorResponse(errcode.ErrorCreateTagFail)
