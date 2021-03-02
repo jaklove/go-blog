@@ -36,7 +36,6 @@ func (a Article) Update(db *gorm.DB, values interface{}) error {
 	if err := db.Model(&a).Updates(values).Where("id = ? AND is_del = ?", a.ID, a.IsDel).Error; err != nil {
 		return err
 	}
-
 	return nil
 }
 

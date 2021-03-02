@@ -52,7 +52,7 @@ func (Dao *Dao) UpdateArticle(param *Article) error {
 		values["title"] = param.Title
 	}
 	if param.CoverImageUrl != "" {
-		values["cover_iamge_url"] = param.CoverImageUrl
+		values["cover_image_url"] = param.CoverImageUrl
 	}
 	if param.Desc != "" {
 		values["desc"] = param.Desc

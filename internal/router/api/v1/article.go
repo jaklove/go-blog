@@ -38,7 +38,6 @@ func (a Article)Create(c *gin.Context)  {
 	}
 	svc := service.New(c.Request.Context())
 
-
 	_,err := svc.CrateArticle(&param)
 	if err != nil{
 		global.Logger.Errorf("svc.CreateTag err: %v",err)
