@@ -5,13 +5,21 @@ import (
 	"github.com/gin-gonic/gin"
 	"go-blog/global"
 	"go-blog/internal/dao"
+	"go-blog/internal/model"
 	"go-blog/internal/service"
 	"go-blog/pkg/app"
 	"go-blog/pkg/errcode"
+	"sync"
 )
 
 type Article struct {
-
+	ID uint32 `json:"id"`
+	Title string `json:"title"`
+	Desc string `json:"desc"`
+	Content string `json:"content"`
+	CoverImageUrl string `json:"cover_image_url"`
+	State uint8 `json:"state"`
+	Tag *model.Tag `json:"tag"`
 }
 
 func NewArticle() Article {
@@ -52,3 +60,29 @@ func (a Article)Create(c *gin.Context)  {
 func (a Article)Update(c *gin.Context)  {}
 
 func (a Article)Delete(c *gin.Context)  {}
+
+
+var rwMutex sync.RWMutex
+
+var data sync.Map
+
+func (a Article)Lists(c *gin.Context)  {
+	//实例化对应的service
+	svc := service.New(c.Request.Context())
+	response := app.NewResponse(c)
+	lists, err := svc.Lists()
+	if err != nil{
+		global.Logger.Errorf("svc.listss err: %v",err)
+		response.ToErrorResponse(errcode.ErrorCreateTagFail)
+		return
+	}
+
+	data.Store("list",lists)
+	load, ok := data.Load("list")
+	if ok{
+		response.ToResponse(load)
+	}
+
+	return
+}
+

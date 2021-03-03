@@ -41,6 +41,11 @@ func NewRouter() *gin.Engine {
 		apiv1.PATCH("/articles/:id/state",article.Update)
 		apiv1.GET("/articles/:id",article.Get)
 		apiv1.GET("/articles",article.List)
+
+		//列表接口测试
+		apiv1.GET("/article",article.Lists)
+
+
 	}
 	return engine
 }

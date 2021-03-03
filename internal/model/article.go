@@ -10,11 +10,11 @@ type ArticleTag struct {
 
 type Article struct {
 	*Model
-	Title string `json:"title"`
-	Desc string `json:"desc"`
-	Content string `json:"content"`
+	Title         string `json:"title"`
+	Desc          string `json:"desc"`
+	Content       string `json:"content"`
 	CoverImageUrl string `json:"cover_image_url"`
-	State uint8 `json:"state"`
+	State         uint8  `json:"state"`
 }
 
 func (a *Article) TableName() string {
@@ -111,4 +111,30 @@ func (a Article) CountByTagID(db *gorm.DB, tagID uint32) (int, error) {
 	return count, nil
 }
 
+type ArticleList struct {
+	Id            uint32 `json:"id"`
+	Title         string `json:"title"`
+	CoverImageUrl string `json:"cover_image_url"`
+	Content       string `json:"content"`
+}
 
+func (a Article) GetList(db *gorm.DB) ([]*ArticleList, error) {
+	fields := []string{"id", "title", "cover_image_url", "content"}
+	tableName := a.TableName()
+	rows, err := db.Select(fields).Table(tableName).Rows()
+	if err != nil {
+		return nil, err
+	}
+
+	var articleLists []*ArticleList
+	for rows.Next() {
+		r := &ArticleList{}
+		if err := rows.Scan(&r.Id, &r.Title, &r.CoverImageUrl, &r.Content); err != nil {
+			return nil, err
+		}
+
+		articleLists = append(articleLists, r)
+	}
+
+	return articleLists, nil
+}

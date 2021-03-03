@@ -83,3 +83,8 @@ func (Dao *Dao)GetArticleListByTagID(id uint32,state uint8,page,pagesize int) ([
 	article := model.Article{State: state}
 	return article.ListByTagID(Dao.engine,id,app.GetPageOffset(page,pagesize),pagesize)
 }
+
+func (Dao *Dao)GetArticleList() ([]*model.ArticleList,error) {
+	article := model.Article{}
+	return article.GetList(Dao.engine)
+}

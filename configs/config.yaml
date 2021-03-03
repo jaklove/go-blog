@@ -22,10 +22,15 @@ DataBase:
   DBType: mysql
   Username: root
   Password: sinowealth
-  Host: 127.0.0.1:3306
+  Host: 192.168.56.1:3306
   DBName: go
   TablePrefix: blog_
   Charset: utf8
   ParseTime: True
   MaxIdleConns: 10
   MaxOpenConns: 30
+
+JWT:
+  Secret: zhourenjie
+  Issuer: blog-service
+  Expire: 7200
