@@ -31,6 +31,6 @@ DataBase:
   MaxOpenConns: 30
 
 JWT:
-  Secret: zhourenjie
+  Secret: go-blog
   Issuer: blog-service
   Expire: 7200

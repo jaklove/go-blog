@@ -6,6 +6,7 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"go-blog/global"
 	"go-blog/internal/middleware"
+	"go-blog/internal/router/api"
 	v1 "go-blog/internal/router/api/v1"
 	"net/http"
 )
@@ -25,7 +26,12 @@ func NewRouter() *gin.Engine {
 	upload := NewUpload()
 	engine.POST("/upload/file",upload.UploadFile)
 	engine.StaticFS("/static",http.Dir(global.AppSetting.UploadSavePath))
+
+	//获取token
+	engine.GET("/auth",api.GetAuth)
+
 	apiv1 := engine.Group("/api/v1")
+	apiv1.Use(middleware.JWT())
 	{
 		//标签路由管理
 		apiv1.POST("/tags",tag.Create)

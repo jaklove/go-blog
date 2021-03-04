@@ -1,6 +1,7 @@
 package app
 
 import (
+	"fmt"
 	"github.com/dgrijalva/jwt-go"
 	"go-blog/global"
 	"go-blog/pkg/util"
@@ -13,50 +14,45 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
-func GetJWTSecret() string {
-	return global.JWTSetting.Secret
+func GetJWTSecret() []byte {
+	return []byte(global.JWTSetting.Secret)
 }
 
-type StandardClaims struct {
-	Audience  string `json:"aud,omitempty"`
-	ExpireAt  int64  `json:"exp,omitempty"`
-	Id        string `json:"jti,omitempty"`
-	IssuedAt  int64  `json:"iat,omitempty"`
-	Issuer    string `json:"iss,omitempty"`
-	NotBefore int64  `json:"nbf,omitempty"`
-	Subject   string `json:"sub,omitempty"`
-}
-
-func GenerateToken(appkey, appScret string) (string, error) {
+func GenerateToken(appkey, appSecret string) (string, error) {
 	nowTime := time.Now()
 	expireTime := nowTime.Add(global.JWTSetting.Expire)
-	Claims := Claims{
+
+	claims := Claims{
 		AppKey:    util.EncodeMD5(appkey),
-		AppSecret: util.EncodeMD5(appScret),
+		AppSecret: util.EncodeMD5(appSecret),
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expireTime.Unix(),
 			Issuer:    global.JWTSetting.Issuer,
 		},
 	}
+	tokenClaims := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	jwtSecret := GetJWTSecret()
 
-	tokenClaims := jwt.NewWithClaims(jwt.SigningMethodES256, Claims)
-	token, err := tokenClaims.SignedString(GetJWTSecret())
+	fmt.Println("secret", jwtSecret)
+	fmt.Println("appSecret", appSecret)
+
+	token, err := tokenClaims.SignedString(jwtSecret)
 	if err != nil {
 		return "", err
 	}
 	return token, nil
 }
 
-func ParseToken(token string)(*Claims,error) {
+func ParseToken(token string) (*Claims, error) {
 	tokenClaims, err := jwt.ParseWithClaims(token, &Claims{}, func(token *jwt.Token) (interface{}, error) {
 		return GetJWTSecret(), nil
 	})
 
 	if tokenClaims != nil {
-		if claims, ok := tokenClaims.Claims.(*Claims); ok && tokenClaims.Valid {
+		claims, ok := tokenClaims.Claims.(*Claims)
+		if ok && tokenClaims.Valid {
 			return claims, nil
 		}
 	}
-
 	return nil, err
 }
