@@ -7,6 +7,7 @@ import (
 	"go-blog/global"
 	"go-blog/internal/middleware"
 	"go-blog/internal/router/api"
+	"go-blog/internal/router/api/music"
 	v1 "go-blog/internal/router/api/v1"
 	"net/http"
 )
@@ -22,6 +23,7 @@ func NewRouter() *gin.Engine {
 
 	tag := v1.Tag{}
 	article := v1.Article{}
+	student :=  music.Student{}
 
 	upload := NewUpload()
 	engine.POST("/upload/file",upload.UploadFile)
@@ -29,7 +31,6 @@ func NewRouter() *gin.Engine {
 
 	//获取token
 	engine.GET("/auth",api.GetAuth)
-
 	apiv1 := engine.Group("/api/v1")
 	apiv1.Use(middleware.JWT())
 	{
@@ -50,8 +51,12 @@ func NewRouter() *gin.Engine {
 
 		//列表接口测试
 		apiv1.GET("/article",article.Lists)
-
-
 	}
+
+	ap1v2 := engine.Group("/api/music")
+	{
+		ap1v2.GET("/students",student.List)
+	}
+
 	return engine
 }

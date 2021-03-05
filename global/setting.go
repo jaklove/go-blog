@@ -11,4 +11,5 @@ var (
 	DataBaseSetting *setting.DatabaseSettings
 	Logger          *logger.Logger
 	JWTSetting      *setting.JwtSettings
+	MusicSetting    *setting.MusicBaseSetting
 )

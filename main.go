@@ -71,6 +71,12 @@ func setupSetting() error {
 		return err
 	}
 
+	err = newSetting.ReadSection("MusicDataBase", &global.MusicSetting)
+	if err != nil {
+		return err
+	}
+
+
 	err = newSetting.ReadSection("JWT",&global.JWTSetting)
 	if err != nil{
 		return err
@@ -85,6 +91,11 @@ func setupSetting() error {
 func setUpDBEngine() error {
 	var err error
 	global.DBEngine, err = model.NewDBEngine(global.DataBaseSetting)
+	if err != nil {
+		return err
+	}
+
+	global.MusicDBEngine,err = model.NewMusicDBEngine(global.MusicSetting)
 	if err != nil {
 		return err
 	}

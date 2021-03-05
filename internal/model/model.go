@@ -19,6 +19,34 @@ type Model struct {
 	IsDel      uint8  `json:"is_del"`
 }
 
+func NewMusicDBEngine(dataBaseSetting *setting.MusicBaseSetting) (*gorm.DB, error) {
+	open, err := gorm.Open(dataBaseSetting.DBType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=%s&parseTime=%t&loc=Local",
+		dataBaseSetting.Username,
+		dataBaseSetting.Password,
+		dataBaseSetting.Host,
+		dataBaseSetting.DBName,
+		dataBaseSetting.Charset,
+		dataBaseSetting.ParseTime,
+	))
+	if err != nil {
+		return nil, err
+	}
+
+	if global.ServerSetting.RunMode == "debug" {
+		open.LogMode(true)
+	}
+
+	open.SingularTable(true)
+	open.Callback().Create().Replace("gorm:update_time_stamp", updateTimeStampForCreateCallBack)
+	open.Callback().Update().Replace("gorm:update_time_stamp", updateTimeStampForUpdateCallBack)
+	open.Callback().Delete().Replace("gorm:delete", deleteCallback)
+
+	open.DB().SetMaxIdleConns(dataBaseSetting.MaxIdleConns)
+	open.DB().SetMaxOpenConns(dataBaseSetting.MaxIdleConns)
+	return open, nil
+}
+
+
 func NewDBEngine(dataBaseSetting *setting.DatabaseSettings) (*gorm.DB, error) {
 	open, err := gorm.Open(dataBaseSetting.DBType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=%s&parseTime=%t&loc=Local",
 		dataBaseSetting.Username,

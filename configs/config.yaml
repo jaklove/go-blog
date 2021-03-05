@@ -30,6 +30,18 @@ DataBase:
   MaxIdleConns: 10
   MaxOpenConns: 30
 
+MusicDataBase:
+  DBType: mysql
+  Username: viptest
+  Password: viptest_2017
+  Host:  18.18.100.2:3306
+  DBName: music
+  TablePrefix:
+  Charset: utf8
+  ParseTime: True
+  MaxIdleConns: 10
+  MaxOpenConns: 30
+
 JWT:
   Secret: go-blog
   Issuer: blog-service

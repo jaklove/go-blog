@@ -36,6 +36,19 @@ type DatabaseSettings struct {
 	MaxOpenConns int
 }
 
+type MusicBaseSetting struct {
+	DBType       string
+	Username     string
+	Password     string
+	Host         string
+	DBName       string
+	TablePrefix  string
+	Charset      string
+	ParseTime    bool
+	MaxIdleConns int
+	MaxOpenConns int
+}
+
 type JwtSettings struct {
 	Secret string
 	Issuer string

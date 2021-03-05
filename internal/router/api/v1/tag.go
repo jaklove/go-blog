@@ -11,10 +11,6 @@ import (
 
 type Tag struct {}
 
-func NewTga()Tag  {
-	return Tag{}
-}
-
 
 func (t Tag)List(c *gin.Context)  {
 	param := service.TagListRequest{}
