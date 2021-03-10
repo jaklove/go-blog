@@ -7,6 +7,7 @@ import (
 	"go-blog/internal/router"
 	"go-blog/pkg/logger"
 	"go-blog/pkg/setting"
+	"go-blog/pkg/tracer"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
 	"net/http"
@@ -29,7 +30,7 @@ func main() {
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	global.Logger.Infof("%s: go-programming-tour-books/%s","zhourenjie","blog-service")
+	//global.Logger.Infof("%s: go-programming-tour-books/%s","zhourenjie","blog-service")
 	S.ListenAndServe()
 }
 
@@ -48,6 +49,20 @@ func init() {
 	if err != nil{
 		log.Fatalf("init.setUpDBEngine err: %v",err)
 	}
+
+	err = setupTracer()
+	if err != nil{
+		log.Fatalf("init.setupTracer err: %v",err)
+	}
+}
+
+func setupTracer()error  {
+	jaegerTracer,_,err := tracer.NewJaegerTracer("blog-service","192.168.56.100:6831")
+	if err != nil{
+		return err
+	}
+	global.Tracer = jaegerTracer
+	return nil
 }
 
 func setupSetting() error {
@@ -78,6 +93,11 @@ func setupSetting() error {
 
 
 	err = newSetting.ReadSection("JWT",&global.JWTSetting)
+	if err != nil{
+		return err
+	}
+
+	err = newSetting.ReadSection("Email",&global.EmailSetting)
 	if err != nil{
 		return err
 	}

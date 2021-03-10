@@ -38,3 +38,53 @@
 2021/03/04 16:52:39 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614847959209628500}
 2021/03/04 17:00:34 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614848434421366000}
 2021/03/04 17:14:16 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614849256341592000}
+2021/03/04 19:33:54 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614857634360715300}
+2021/03/05 10:35:38 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614911738718598100}
+2021/03/05 10:36:04 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614911764348312000}
+2021/03/05 10:36:49 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614911809543710700}
+2021/03/05 10:36:59 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614911819049489700}
+2021/03/05 10:47:32 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614912452757247200}
+2021/03/05 10:52:06 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614912726696284000}
+2021/03/05 11:11:10 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614913870220037100}
+2021/03/05 11:52:32 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614916352847597700}
+2021/03/05 13:28:29 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614922109828852500}
+2021/03/05 13:40:45 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614922845681824900}
+2021/03/05 14:17:33 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614925053252424100}
+2021/03/05 14:46:32 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614926792438037800}
+2021/03/05 14:47:28 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614926848955545600}
+2021/03/05 14:48:02 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614926882219406600}
+2021/03/05 14:48:11 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614926891126733900}
+2021/03/05 14:48:44 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614926924977302800}
+2021/03/05 14:48:52 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614926932594217500}
+2021/03/05 14:52:14 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614927134120567200}
+2021/03/05 14:52:25 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614927145262482400}
+2021/03/05 14:54:40 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614927280061169900}
+2021/03/05 15:00:06 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614927606337770900}
+2021/03/05 15:01:26 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614927686559538100}
+2021/03/05 15:01:46 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"error","message":"svc.getStudentList err: sql: Scan error on column index 1, name \"open_id\": converting driver.Value type []uint8 (\"onhLcsuIunZqAvUGJkKdNglONm_M\") to a uint32: invalid syntax","time":1614927706647149000}
+2021/03/05 15:04:20 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614927860740873500}
+2021/03/05 15:04:27 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"error","message":"svc.getStudentList err: sql: Scan error on column index 1, name \"open_id\": converting driver.Value type []uint8 (\"onhLcsuIunZqAvUGJkKdNglONm_M\") to a uint32: invalid syntax","time":1614927867612220400}
+2021/03/05 15:05:21 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614927921977390200}
+2021/03/05 15:05:26 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"error","message":"svc.getStudentList err: sql: Scan error on column index 1, name \"open_id\": converting driver.Value type []uint8 (\"onhLcsuIunZqAvUGJkKdNglONm_M\") to a uint32: invalid syntax","time":1614927926304689600}
+2021/03/05 15:08:58 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"error","message":"svc.getStudentList err: sql: Scan error on column index 1, name \"open_id\": converting driver.Value type []uint8 (\"onhLcsuIunZqAvUGJkKdNglONm_M\") to a uint32: invalid syntax","time":1614928138513017400}
+2021/03/05 15:09:24 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614928164879149100}
+2021/03/05 15:09:33 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"error","message":"svc.getStudentList err: sql: Scan error on column index 1, name \"open_id\": converting driver.Value type []uint8 (\"onhLcsuIunZqAvUGJkKdNglONm_M\") to a uint32: invalid syntax","time":1614928173616302900}
+2021/03/05 15:10:00 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614928200172579500}
+2021/03/05 15:10:30 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614928230077001500}
+2021/03/05 15:44:04 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1614930244464099900}
+2021/03/08 10:44:59 {"callers":["C:/develop/go-blog/main.go: 43 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615171499250745300}
+2021/03/09 17:44:41 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615283081907049600}
+2021/03/09 17:56:13 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615283773140452800}
+2021/03/09 17:59:52 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615283992771462700}
+2021/03/09 23:11:30 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615302690738167600}
+2021/03/10 14:50:17 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615359017340702500}
+2021/03/10 14:50:35 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615359035963269700}
+2021/03/10 15:04:59 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615359899534834900}
+2021/03/10 15:16:41 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615360601938141300}
+2021/03/10 15:31:16 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615361476196828400}
+2021/03/10 15:33:35 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615361615527801400}
+2021/03/10 15:34:21 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615361661687749200}
+2021/03/10 15:35:00 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615361700340757400}
+2021/03/10 15:35:32 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615361732585993900}
+2021/03/10 15:35:37 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615361737688800200}
+2021/03/10 15:35:47 {"callers":["C:/develop/go-blog/main.go: 44 main.init.0"],"level":"info","message":"zhourenjie: go-programming-tour-books/blog-service","time":1615361747407856200}

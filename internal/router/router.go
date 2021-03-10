@@ -9,12 +9,33 @@ import (
 	"go-blog/internal/router/api"
 	"go-blog/internal/router/api/music"
 	v1 "go-blog/internal/router/api/v1"
+	"go-blog/pkg/limiter"
 	"net/http"
+	"time"
 )
 
+var methodLimiters = limiter.NewMethodLimiter().AddBuckets(
+	limiter.LimiterBucketRule{
+		Key: "/auth",
+		FillInterval: time.Second,
+		Capacity: 10,
+		Quantum: 10,
+	})
 
 func NewRouter() *gin.Engine {
 	engine := gin.New()
+	if global.ServerSetting.RunMode == "debug"{
+		engine.Use(gin.Logger())
+		engine.Use(gin.Recovery())
+	}else {
+		engine.Use(middleware.AccessLog())
+		engine.Use(middleware.Recovery())
+	}
+
+	engine.Use(middleware.RateLimiter(methodLimiters))
+	engine.Use(middleware.ContextTimeout(60 * time.Second))
+	engine.Use(middleware.Tracing())
+
 	engine.Use(gin.Logger())
 	engine.Use(gin.Recovery())
 	engine.Use(middleware.Translations())

@@ -12,4 +12,5 @@ var (
 	Logger          *logger.Logger
 	JWTSetting      *setting.JwtSettings
 	MusicSetting    *setting.MusicBaseSetting
+	EmailSetting    *setting.EmailSetting
 )
