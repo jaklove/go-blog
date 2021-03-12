@@ -7,6 +7,7 @@ import (
 	"go-blog/global"
 	"go-blog/pkg/setting"
 	"time"
+	otgorm "github.com/eddycjy/opentracing-gorm"
 )
 
 type Model struct {
@@ -43,6 +44,7 @@ func NewMusicDBEngine(dataBaseSetting *setting.MusicBaseSetting) (*gorm.DB, erro
 
 	open.DB().SetMaxIdleConns(dataBaseSetting.MaxIdleConns)
 	open.DB().SetMaxOpenConns(dataBaseSetting.MaxIdleConns)
+	otgorm.AddGormCallbacks(open)
 	return open, nil
 }
 
@@ -71,6 +73,7 @@ func NewDBEngine(dataBaseSetting *setting.DatabaseSettings) (*gorm.DB, error) {
 
 	open.DB().SetMaxIdleConns(dataBaseSetting.MaxIdleConns)
 	open.DB().SetMaxOpenConns(dataBaseSetting.MaxIdleConns)
+	otgorm.AddGormCallbacks(open)
 	return open, nil
 }
 

@@ -1,6 +1,9 @@
 package main
 
 import (
+	"context"
+	"flag"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"go-blog/global"
 	"go-blog/internal/model"
@@ -11,8 +14,13 @@ import (
 	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"strings"
+	"syscall"
 	"time"
 )
+
 
 
 
@@ -30,12 +38,36 @@ func main() {
 		MaxHeaderBytes: 1 << 20,
 	}
 
+	//平滑重启
+	go func() {
+		if err := S.ListenAndServe();err != nil && err != http.ErrServerClosed{
+			log.Fatalf("s.ListenAndServe err:%v",err)
+		}
+	}()
+
+	quit := make(chan os.Signal)
+	signal.Notify(quit,syscall.SIGINT,syscall.SIGTERM)
+	<-quit
+	log.Println("shuting down server...")
+
+	//最大时间控制，通知该服务端它有5s的时间来处理原有的请求
+	ctx,cancel := context.WithTimeout(context.Background(),5*time.Second)
+
+	defer cancel()
+	if err := S.Shutdown(ctx);err != nil{
+		log.Fatal("Server forced to shutdown:",err)
+	}
+
+	log.Println("Server exiting")
+
+
 	//global.Logger.Infof("%s: go-programming-tour-books/%s","zhourenjie","blog-service")
-	S.ListenAndServe()
+	//S.ListenAndServe()
 }
 
 //初始化对应的对象
 func init() {
+	setupFlag()
 	err := setupSetting()
 	if err != nil {
 		log.Fatalf("init.setUpSetting: %v", err)
@@ -56,6 +88,24 @@ func init() {
 	}
 }
 
+var (
+	port string
+	runMode string
+	config string
+)
+
+func setupFlag()error  {
+	flag.StringVar(&port,"port","","启动端口")
+	flag.StringVar(&runMode,"mode","","启动模式")
+	flag.StringVar(&config,"config","configs/","指定要使用的配置文件路径")
+	flag.Parse()
+
+	fmt.Println("port：   ",port)
+	return nil
+}
+
+
+
 func setupTracer()error  {
 	jaegerTracer,_,err := tracer.NewJaegerTracer("blog-service","192.168.56.100:6831")
 	if err != nil{
@@ -66,7 +116,7 @@ func setupTracer()error  {
 }
 
 func setupSetting() error {
-	newSetting, err := setting.NewSetting()
+	newSetting, err := setting.NewSetting(strings.Split(config,",")...)
 	if err != nil {
 		return err
 	}
@@ -105,6 +155,15 @@ func setupSetting() error {
 	global.JWTSetting.Expire *= time.Second
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
+
+	fmt.Println("port:",port)
+	if port != ""{
+		global.ServerSetting.HttpPort = port
+	}
+	if runMode != ""{
+		global.ServerSetting.RunMode = runMode
+	}
+
 	return nil
 }
 
