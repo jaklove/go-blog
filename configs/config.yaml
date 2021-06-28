@@ -1,6 +1,6 @@
 Server:
   RunMode: debug
-  HttpPort: 8000
+  HttpPort: 8001
   ReadTimeout: 60
   WriteTimeout: 60
 
@@ -32,9 +32,9 @@ DataBase:
 
 MusicDataBase:
   DBType: mysql
-  Username: viptest
-  Password: viptest_2017
-  Host:  18.18.100.2:3306
+  Username: ''
+  Password: ''
+  Host:  ''
   DBName: music
   TablePrefix:
   Charset: utf8
@@ -50,9 +50,9 @@ JWT:
 Email:
   Host: smtp.exmail.qq.com
   Port: 465
-  UserName: no-reply@peilian.com
-  Password: 5kPuQhULar27int4
+  UserName: ''
+  Password: ''
   IsSSL: true
-  From: no-reply@peilian.com
+  From: ''
   To:
-    - zhourenjie@peilian.com
+    - ''
